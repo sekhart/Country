@@ -1,0 +1,17 @@
+{% extends "countries/base.html" %}
+
+{% block content%}
+<p>Countries</p>
+<ul>
+{% for country in countries%}
+    <li>
+        <a href = "{% url 'countries:stateslist' country.id %}">{{country}}</a>
+    </li>
+    {% empty %}
+    <li>No Countries have been added yet.</li>
+    {% endfor %}
+</ul>
+
+
+
+{% endblock content %}
