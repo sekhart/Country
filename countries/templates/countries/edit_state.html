@@ -1,0 +1,15 @@
+{% extends 'countries/base.html' %}
+
+{% block content %}
+
+<p>
+    <a href = "{% url 'countries:stateslist' country.id %}">{{country}}</a>
+</p>
+<p>Edit State:</p>
+ <form action="{% url 'countries:edit_state' state.id %}" method='post'>
+{% csrf_token %}
+{{ form.as_p }}
+ <button name="submit">save changes</button>
+</form>
+
+{% endblock content %}

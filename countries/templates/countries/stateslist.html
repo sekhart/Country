@@ -8,6 +8,9 @@
         <p>State Name: {{ s.state_name }}</p>
         <p>State Capital: {{ s.state_capital }}</p>
         <p>Total Districts: {{ s.total_districts }}</p>
+        <p>
+            <a href="{% url 'countries:edit_state' s.id %}">Edit State</a>
+        </p>
     </li>
     {% empty %}
 <li>

@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     # My App
     'countries',
+    # users account App
+    'users',
 ]
 
 MIDDLEWARE = [

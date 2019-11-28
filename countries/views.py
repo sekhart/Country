@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Country
+from .models import Country, States
 
 from .forms import CountryForm, StateForm
 
@@ -54,9 +54,30 @@ def new_state(request, country_id):
     else:
         form = StateForm(request.POST)
         if form.is_valid():
-            new_state = form.save(commit=False)
-            new_state.country = country
-            new_state.save()
+            newstate = form.save(commit=False)
+            newstate.country = country
+            newstate.country_name_id = country_id
+            newstate.save()
             return HttpResponseRedirect(reverse('countries:stateslist', args=[country_id]))
     context = {'country': country, 'form': form}
     return render(request, 'countries/new_state.html', context)
+
+
+def edit_state(request, state_id):
+    """Edit State for a particular country"""
+    state = States.objects.get(id=state_id)
+    country = state.country_name
+
+    if request.method != 'POST':
+        # Initial request; pre-fill form with the current entry.
+        form = StateForm(instance=state)
+    else:
+        # POST data submitted; process data.
+        form = StateForm(instance=state, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('countries:stateslist', args=[country.id]))
+    context = {'state': state, 'country': country, 'form': form}
+    return render(request, 'countries/edit_state.html', context)
+
+
