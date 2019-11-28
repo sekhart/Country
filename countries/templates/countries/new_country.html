@@ -1,0 +1,12 @@
+{% extends 'countries/base.html' %}
+
+{% block content %}
+<p>Add a new Country: </p>
+
+<form action = "{% url 'countries:new_country' %}" method = 'post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button name = "submit">Add Country</button>
+</form>
+
+{% endblock content %}

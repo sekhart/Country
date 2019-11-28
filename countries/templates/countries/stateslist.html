@@ -16,6 +16,6 @@ There are no states for this country yet.
 {% endfor %}
 </ul>
 
-
+<a href = "{% url 'countries:new_state' state.id %}">Add a new state</a>
 
 {% endblock content %}
