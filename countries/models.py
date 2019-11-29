@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -7,6 +8,7 @@ from django.db import models
 class Country(models.Model):
     country_name = models.CharField('Country Name', max_length=250)
     date_added = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.country_name
