@@ -10,7 +10,6 @@ from .forms import CountryForm, StateForm
 
 def home(request):
     """The home page for Countries"""
-    print('home page')
     return render(request, 'countries/home.html')
 
 

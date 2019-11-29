@@ -1,12 +1,16 @@
 {% extends 'countries/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+<h2>Add a new Country:</h2>
+{% endblock header %}
 
 {% block content %}
-<p>Add a new Country: </p>
-
-<form action = "{% url 'countries:new_country' %}" method = 'post'>
+<form action = "{% url 'countries:new_country' %}" method = 'post' class = "form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name = "submit">Add Country</button>
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button name="submit" class="btn btn-primary">Add Country</button>
+    {% endbuttons %}
 </form>
-
 {% endblock content %}

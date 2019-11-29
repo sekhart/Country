@@ -1,24 +1,30 @@
 {% extends 'countries/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+<h2>{{state}}</h2>
+{% endblock header %}
+
 {% block content %}
-<p>Country: <font size="3" color="blue">  <b>{{state}}</b></font></p>
-<ul>
-    {% for s in stateslist %}
-    <li>
-        <p><b> Added on {{ s.date_added|date:'M d, Y H:i' }}</b></p>
+<p><a href = "{% url 'countries:new_state' state.id %}">Add a new state</a></p>
+{% for s in stateslist %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3>
+            {{s.date_added|date:'M d, Y H:i' }}
+            <small>
+                <a href="{% url 'countries:edit_state' s.id %}">
+                    Edit State</a>
+            </small>
+        </h3>
+    </div>
+    <div class="panel-body">
         <p>State Name: {{ s.state_name }}</p>
         <p>State Capital: {{ s.state_capital }}</p>
         <p>Total Districts: {{ s.total_districts }}</p>
-        <p>
-            <a href="{% url 'countries:edit_state' s.id %}">Edit State</a>
-        </p>
-    </li>
-    {% empty %}
-<li>
+</div>
+</div> <!-- panel -->
+ {% empty %}
 There are no states for this country yet.
-</li>
 {% endfor %}
-</ul>
-
-<a href = "{% url 'countries:new_state' state.id %}">Add a new state</a>
-
 {% endblock content %}

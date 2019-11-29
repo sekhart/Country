@@ -7,6 +7,6 @@ app_name = "users"
 urlpatterns = [
     path('login/', LoginView.as_view(template_name='users/login.html'), name="login"),
     # Logout page
-    path('^logout/$', views.logout_view, name='logout'),
-    path('register/$', views.register, name='register')
+    path('logout/', views.logout_view, name='logout'),
+    path('register/', views.register, name='register')
 ]

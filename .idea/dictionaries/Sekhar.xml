@@ -3,6 +3,8 @@
     <words>
       <w>cntrs</w>
       <w>endblock</w>
+      <w>endbuttons</w>
+      <w>endfor</w>
       <w>newcountry</w>
       <w>newstate</w>
       <w>stateslist</w>

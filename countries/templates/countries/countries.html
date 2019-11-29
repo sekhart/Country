@@ -1,17 +1,21 @@
 {% extends "countries/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+<h2>Countries:</h2>
+{% endblock header %}
 
 {% block content%}
-<p>Countries</p>
 <ul>
 {% for country in countries%}
     <li>
+        <h3>
         <a href = "{% url 'countries:stateslist' country.id %}">{{country}}</a>
+        </h3>
     </li>
     {% empty %}
     <li>No Countries have been added yet.</li>
     {% endfor %}
 </ul>
-
-<a href = "{% url 'countries:new_country' %}">Add a new Country</a>
-
+<h3><a href = "{% url 'countries:new_country' %}">Add a new Country</a></h3>
 {% endblock content %}

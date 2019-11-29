@@ -1,4 +1,18 @@
 {% extends "countries/base.html" %}
- {% block content %}
-<p>Countries List with States Details App.</p>
- {% endblock content %}
+
+{% block header%}
+<div class = 'jumbotron'>
+ <h3>Check the Countries</h3>
+</div>
+{% endblock header%}
+
+{% block content %}
+<h4>
+<a href="{% url 'users:register' %}">Register an account</a> to see the Countries and states details,
+ and list the countries you're added.
+</h4>
+<h4>
+Whenever you enter a country, make an states list
+summarizing what you've entered.
+</h4>
+{% endblock content %}
